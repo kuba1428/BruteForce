@@ -1,0 +1,60 @@
+package pl.seth.bforce;
+
+import java.sql.SQLOutput;
+
+public class RunBForce {
+
+    public static void main(String[] args) {
+        Hasher hasher = new Hasher();
+        String doHaszowania = "";
+
+        rekSprawdzHash( "", 0);
+
+
+        for (char c1 : znaczki) {
+            doHaszowania = "" + c1;
+
+            String zahaszowane1 = hasher.hashString(doHaszowania);
+            if (zahaszowane1.equals(SZUKANE)) {
+                System.out.println( "Znalazłem (1 znak): " + doHaszowania );
+            }
+
+            for (char c2: znaczki) {
+                String doHaszowania2 = doHaszowania + c2;
+
+                String zahaszowane2 = hasher.hashString(doHaszowania2);
+                if (zahaszowane2.equals(SZUKANE)) {
+                    System.out.println( "Znalazłem (2 znaki): " + doHaszowania2 );
+                }
+
+                for (char c3: znaczki) {
+                    String doHaszowania3 = doHaszowania2 + c3;
+
+                    String zahaszowane3 = hasher.hashString(doHaszowania3);
+                    if (zahaszowane3.equals(SZUKANE)) {
+                        System.out.println( "Znalazłem (3 znaki): " + doHaszowania3 );
+                    }
+
+                    for (char c4 : znaczki) {
+                        String doHaszowania4 = doHaszowania3 + c4;
+
+                        String zahaszowane4 = hasher.hashString(doHaszowania4);
+                        if (zahaszowane4.equals(SZUKANE)) {
+                            System.out.println( "Znalazłem (4 znaki): " + doHaszowania4 );
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private static void  rekSprawdzHash(String dotychczasoweDoHaszowania, int liczbaZnakow) {
+
+    }
+
+    private static final char[] znaczki = "0123456789abcdefghijklmnopqrstuvwyz".toCharArray();
+
+    private static String SZUKANE = "C268120CE3918B1264FE2C05143B5C4B";
+
+
+}
